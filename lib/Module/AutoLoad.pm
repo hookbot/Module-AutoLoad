@@ -141,7 +141,7 @@ sub inc {
     my $search = fetch("$mapper/$dist/");
     warn "DEBUG: Probed: $last_fetched\n" if $ENV{AUTOLOAD_DEBUG};
     if ($search =~ m{download_url.*?(\w+/[\w\d\-\.]+)\.tar.gz}) {
-      my $src = "http://st.aticpan.org/source/$1/";
+      my $src = full("/source/$1/");
       if (my $MANIFEST = fetch "$src/MANIFEST") {
         $src = $1 if $last_fetched =~ m{^(.*?)/+MANIFEST};
         if ($MANIFEST =~ m{^lib/}m) {
