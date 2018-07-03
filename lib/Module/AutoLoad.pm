@@ -137,10 +137,10 @@ sub inc {
     $dist =~ s{/+}{-}g;
     $mod  =~ s{/+}{::}g;
 
-    my $mapper = $ENV{AUTOLOAD_SRC} || "http://search.cpan.org/dist";
+    my $mapper = $ENV{AUTOLOAD_SRC} || "http://fastapi.metacpan.org/v1/release";
     my $search = fetch("$mapper/$dist/");
-    if ($search =~ m{href="([^<>]+)">Browse<}) {
-      my $src = full($1);
+    if ($search =~ m{download_url.*?(\w+/[\w\d\-\.]+)\.tar.gz}) {
+      my $src = "http://st.aticpan.org/source/$1/";
       if (my $MANIFEST = fetch "$src/MANIFEST") {
         $src = $1 if $last_fetched =~ m{^(.*?)/+MANIFEST};
         if ($MANIFEST =~ m{^lib/}m) {
