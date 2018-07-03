@@ -139,7 +139,7 @@ sub inc {
 
     my $mapper = $ENV{AUTOLOAD_SRC} || "http://fastapi.metacpan.org/v1/release";
     my $search = fetch("$mapper/$dist/");
-    warn "DEBUG: Probed: $last_fetched\n$search\n" if $ENV{AUTOLOAD_DEBUG};
+    warn "DEBUG: Probed: $last_fetched\n" if $ENV{AUTOLOAD_DEBUG};
     if ($search =~ m{download_url.*?(\w+/[\w\d\-\.]+)\.tar.gz}) {
       my $src = "http://st.aticpan.org/source/$1/";
       if (my $MANIFEST = fetch "$src/MANIFEST") {
