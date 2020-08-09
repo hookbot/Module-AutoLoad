@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use base qw(Exporter);
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 our $last_fetched = "";
 our $lib = "lib";
