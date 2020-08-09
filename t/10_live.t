@@ -11,7 +11,7 @@ use Test::More;
 BEGIN {
   # Make sure the test module isn't currently installed.
   if (eval 'require Cwd::Guard') {
-    plan skip_all => "You weren't support to actually install Cwd::Guard yourself. Please uninstal it to see if I can still load it.";
+    plan skip_all => "You weren't supposed to actually install Cwd::Guard yourself. Please uninstall it for a better test.";
   }
   else {
     plan tests => 7;
