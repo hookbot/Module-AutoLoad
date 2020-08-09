@@ -6,7 +6,7 @@ t/00_compile.t
 t/01_network.t
 t/05_rcx.t
 t/10_live.t
-lib/Module/AutoLoad.pm
+lib/Acme/AutoLoad.pm
 contrib/RCX.pl
 contrib/cwd_guard.pl
 contrib/hello_app.cgi

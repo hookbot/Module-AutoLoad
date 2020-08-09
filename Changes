@@ -1,4 +1,4 @@
-Revision history for Perl extension Module::AutoLoad.
+Revision history for Perl extension Acme::AutoLoad.
 
 0.06  Tue Jul  3 14:30 2018
  - Avoid using st.aticpan.org

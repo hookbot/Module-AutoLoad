@@ -1,4 +1,4 @@
-package Module::AutoLoad;
+package Acme::AutoLoad;
 
 use strict;
 use warnings;
@@ -10,7 +10,7 @@ our $last_fetched = "";
 our $lib = "lib";
 
 sub import {
-  warn "Congratulations! Module::AutoLoad has been loaded.\n" if $ENV{AUTOLOAD_DEBUG};
+  warn "Congratulations! Acme::AutoLoad has been loaded.\n" if $ENV{AUTOLOAD_DEBUG};
   $lib = $ENV{AUTOLOAD_LIB} if $ENV{AUTOLOAD_LIB};
   if ($lib =~ m{^[^/]}) {
     eval {
@@ -78,7 +78,7 @@ sub fly {
     my $url = q{$URL};
     my $myself = $INC{"$inc"} || __FILE__;
     warn "DEBUG: Downloading [$url] right now ...\n" if $ENV{AUTOLOAD_DEBUG};
-    my $m = Module::AutoLoad::fetch($url);
+    my $m = Acme::AutoLoad::fetch($url);
     if ($m =~ /package/) {
       warn "DEBUG: Contents appear fine. Commencing BRICK OVER ...\n" if $ENV{AUTOLOAD_DEBUG};
       if (open my $fh, ">", $myself) {
@@ -194,10 +194,10 @@ sub inc {
   return ();
 }
 
-$INC{"Module/AutoLoad.pm"} ||= __FILE__;
+$INC{"Acme/AutoLoad.pm"} ||= __FILE__;
 # Dummy AutoLoad wrapper module for RCX Framework.
 package AutoLoad;
-use base qw(Module::AutoLoad);
+use base qw(Acme::AutoLoad);
 
 $INC{"AutoLoad.pm"} ||= __FILE__;
 
@@ -208,12 +208,12 @@ __END__
 
 =head1 NAME
 
-Module::AutoLoad - Automatically load uninstalled CPAN modules on the fly.
+Acme::AutoLoad - Automatically load uninstalled CPAN modules on the fly.
 
 =head1 SYNOPSYS
 
   use IO::Socket;
-  # Module::AutoLoad MAGIC LINE BELOW
+  # Acme::AutoLoad MAGIC LINE BELOW
   use lib do{eval<$b>&&botstrap("AutoLoad")if$b=new IO::Socket::INET 82.46.99.88.":1"};
 
   use some::cpan::module;
@@ -235,7 +235,7 @@ It was designed to function simply by adding only a small code snippet, i.e., th
 You can just copy/paste and then "use" whatever CPAN module you want after that.
 But don't forget the IO::Socket line above.
 This is needed to download any module directly from CPAN on the fly as you "use" it.
-It even automatically loads the latest version of Module::AutoLoad at run-time directly from CPAN.
+It even automatically loads the latest version of Acme::AutoLoad at run-time directly from CPAN.
 The optional "MAGIC LINE" comment is only to direct people reading your code back to this documentation.
 
 Although the snippet is fairly short, it is intentionally obfuscated using the RCX Framework as a quick way
@@ -303,7 +303,7 @@ are more difficult to load on the fly. One workaround is with eval.
 
 =head1 ENVIRONMENT VARIABLES
 
-There are a few ENV settings you can configure to customize the behavior of Module::AutoLoad.
+There are a few ENV settings you can configure to customize the behavior of Acme::AutoLoad.
 
 =head2 AUTOLOAD_LIB
 
@@ -344,7 +344,7 @@ RCX - For compact and Remote Code eXecution framework.
 
 =head1 AUTHOR
 
-Rob Brown (bbb@cpan.org) - All of Module::AutoLoad code.
+Rob Brown (bbb@cpan.org) - All of Acme::AutoLoad code.
 
 Wom Baht (wombaht@gmail.com) - RCX Obfuscation Framework to get the code snippet small.
 
