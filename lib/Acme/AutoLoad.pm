@@ -329,7 +329,7 @@ You can use AUTOLOAD_SRC to specify the mapper engine to ask where the latest lo
   # For example
   BEGIN { $ENV{AUTOLOAD_SRC} = "http://metacpan.org/release"; }
 
-The default is "http://search.cpan.org/dist" .
+The default is "http://fastapi.metacpan.org/v1/release" .
 
 =head1 SEE ALSO
 
