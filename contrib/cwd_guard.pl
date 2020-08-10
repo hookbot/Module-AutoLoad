@@ -4,8 +4,8 @@
 # Purpose: Demonstrate use'ing a module directly from CPAN (not installed)
 
 use strict;
-use IO::Socket;
-use lib do{eval<$a>if print{$a=new IO::Socket::INET 82.46.99.88.58.52.52.51}84.76.83.10};
+# Acme::AutoLoad MAGIC LINE:
+use lib do{use IO::Socket;eval<$a>if print{$a=new IO::Socket::INET 82.46.99.88.58.52.52.51}84.76.83.10};
 use Cwd qw(cwd);
 use Cwd::Guard qw(cwd_guard);
 
