@@ -331,6 +331,14 @@ You can use AUTOLOAD_SRC to specify the mapper engine to ask where the latest lo
 
 The default is "http://fastapi.metacpan.org/v1/release" .
 
+=head2 NETWORK_TEST_ACME_AUTOLOAD
+
+In order to really test the test suite, the NETWORK_TEST_ACME_AUTOLOAD
+environment variable must be set to a true value, otherwise none of the
+network dependent tests will be run. For example:
+
+  NETWORK_TEST_ACME_AUTOLOAD=1 make test
+
 =head1 SEE ALSO
 
 cpan2rpm - Same code to lookup latest module without having to configure CPAN.pm.
