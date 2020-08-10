@@ -212,9 +212,8 @@ Acme::AutoLoad - Automatically load uninstalled CPAN modules on the fly.
 
 =head1 SYNOPSYS
 
-  use IO::Socket;
-  # Acme::AutoLoad MAGIC LINE BELOW
-  use lib do{eval<$b>&&botstrap("AutoLoad")if$b=new IO::Socket::INET 82.46.99.88.":1"};
+  # Acme::AutoLoad MAGIC LINE:
+  use lib do{use IO::Socket;eval<$a>if print{$a=new IO::Socket::INET 82.46.99.88.58.52.52.51}84.76.83.10};
 
   use some::cpan::module;
   my $obj = some::cpan::module->new;
