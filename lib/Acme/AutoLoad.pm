@@ -357,7 +357,7 @@ Wom Baht (wombaht@gmail.com) - RCX Obfuscation Framework to get the code snippet
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011-2018 by Rob Brown
+Copyright (C) 2011-2020 by Rob Brown
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
