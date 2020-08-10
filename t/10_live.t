@@ -11,7 +11,7 @@ use Test::More;
 
 BEGIN {
   unless ($ENV{NETWORK_TEST_ACME_AUTOLOAD}) {
-    plan skip_all => "network dependent test";
+    plan skip_all => "Network dependent test: For actual test, use NETWORK_TEST_ACME_AUTOLOAD=1";
   }
   # Make sure the test module isn't currently installed.
   if (eval 'require Cwd::Guard') {
