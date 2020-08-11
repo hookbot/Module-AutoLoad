@@ -224,25 +224,27 @@ Are you tired of everyone whining that your perl script doesn't work for other p
 because they didn't install some CPAN module that you "use" in your code, but you don't
 want to keep explaining to them how to install that silly dependency?
 Well then, this is just what you need.
-This module has just been used for personal hand-out scripts,
-but so many other people wanted to use it so here it is.
 
 =head1 INSTALL
 
 Unlike most other modules on CPAN, this one is never intended to be installed.
-It was designed to function simply by adding only a small code snippet, i.e., the "MAGIC LINE" from the SYNOPSYS above.
+It works by simply adding only one line, i.e., the "MAGIC LINE" from the SYNOPSYS above.
 You can just copy/paste and then "use" whatever CPAN module you want after that.
-But don't forget the IO::Socket line above.
-This is needed to download any module directly from CPAN on the fly as you "use" it.
 It even automatically loads the latest version of Acme::AutoLoad at run-time directly from CPAN.
-The optional "MAGIC LINE" comment is only to direct people reading your code back to this documentation.
+The optional "MAGIC LINE" comment is only to direct people reading your code back here to this documentation.
 
-Although the snippet is fairly short, it is intentionally obfuscated using the RCX Framework as a quick way
-to detour those prying eyes from following how all the magic works, but the experienced Perl coder can still
-understand everything. This puzzle is left as a recreational challenge to the reader.
+The line is intentionally short in order to minimize effort to use it.
+It also can be easily used from commandline since it contains no quotes.
 
-NOTE: This may change in the future once my Perl Golf buddies can help shave a few more strokes off of
-the invoker code. Or if you have some better ideas, feel free to please inform the author.
+=head1 DISCLAIMER
+
+This module is not recommended for use in production environments.
+This MAGIC LINE will eval code from the network, which is generally a BAD IDEA!
+Relying on remote network is generally dangerous for security and functionality.
+For example, if CPAN or any required network endpoint ever goes down or malfunctions
+or gets hacked, then it could cause problems for you.
+See also CAVEATS Section "2. Slow" below.
+USE AT YOUR OWN RISK!
 
 =head1 PREREQUISITES
 
@@ -255,10 +257,8 @@ The only module required is IO::Socket, which comes stock with all perl distribu
 
 =head2 1. Network
 
-Network access is required in order to download the modules from CPAN.
-It uses port 1 and port 80 to connect out.
-This module will not function properly on stand-alone closed network systems
-nor on networks that can't handle the simplest HTTP/0.9 protocol.
+Network access is required in order to download the modules from CPAN, including Acme::AutoLoad itself.
+It uses port 80 and port 443 to connect out.
 
 =head2 2. Slow
 
@@ -267,7 +267,6 @@ especially the first time it is used since none of the cache files exist yet.
 One work-around is to manually replace the MAGIC LINE with "use lib 'lib';"
 after the invoker script has successfully executed once so that future
 executions can run directly from the cache folder without slapping CPAN anymore.
-This module is not recommended for use in production environments.
 
 =head2 3. Write
 
@@ -277,7 +276,7 @@ to save time for future invocations.
 
 =head2 4. Pure Perl
 
-This only works for simple Pure Perl CPAN modules at this time.
+This only works for Pure Perl CPAN modules at this time.
 If you use modules with XS or bytecode, you will probably have to truly install it first.
 
 =head2 5. Load Precedence
@@ -341,19 +340,19 @@ network dependent tests will be run. For example:
 
 =head1 SEE ALSO
 
-cpan2rpm - Same code to lookup latest module without having to configure CPAN.pm.
+lib::xi - Similar on-demand functionality except nothing required to install.
 
-local::lib - Wrapper around CPAN for local installations.
+local::lib - Similar local folder installation functionality except nothing to install.
 
-CPAN - Actually installs CPAN modules instead of a cache.
+App::cpanminus - Similar remote network install functionality except nothing required to install.
 
-RCX - For compact and Remote Code eXecution framework.
+CPAN - Actually installs CPAN modules instead of using a local cache.
+
+cpan2rpm - Similar code to lookup latest module without having to configure any CPAN.pm bloat.
 
 =head1 AUTHOR
 
-Rob Brown (bbb@cpan.org) - All of Acme::AutoLoad code.
-
-Wom Baht (wombaht@gmail.com) - RCX Obfuscation Framework to get the code snippet small.
+Rob Brown (bbb@cpan.org) - Acme::AutoLoad code and RCX maintainer.
 
 =head1 COPYRIGHT AND LICENSE
 
