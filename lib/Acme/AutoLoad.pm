@@ -201,6 +201,26 @@ use base qw(Acme::AutoLoad);
 
 $INC{"AutoLoad.pm"} ||= __FILE__;
 
+package url;
+
+sub get {
+  local $_ = shift;
+  $_ = shift;
+  s{^http(s|)://}{}i;
+  s{^([\w\-\.\:]+)$}{$1/};
+  s{^([\w\-\.]+)/}{$1:80/};
+  if (m{^([\w\-\.]+:\d+)(/.*)}) {
+    my $host = $1;
+    my $path = $2;
+    my $r = new IO::Socket::INET $host or return warn "$host$!\n";
+    $host =~ s/:\d+$//;
+    print $r "GET $path HTTP/1.0\r\nUser-Agent: Acme::AutoLoad/url::get\r\nHost: $host\r\n\r\n";
+    local $/;
+    return [split/[\r\n]{3,}/,<$r>,2]->[1];
+  }
+  return "";
+}
+
 1;
 __END__
 
